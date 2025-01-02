@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name and language
-project(PROJECT_NAME)
+project(Atomix)
 
 # Specify C standard
 set(CMAKE_C_STANDARD 11)
@@ -16,4 +16,9 @@ include_directories(include)
 file(GLOB SOURCES "src/*.c")
 
 # Add the executable
-add_executable(PROJECT_NAME ${SOURCES})
+add_executable(atomix ${SOURCES})
+
+# Set the output directory to the previous directory
+# set_target_properties(atomix PROPERTIES
+# 	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/.."
+# )
