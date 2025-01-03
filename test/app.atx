@@ -1,1 +1,7 @@
-int x = 1;
+int x = 20000;
+float y1 = 5.0;
+float y2 = 10f;
+double z1 = 15lf;
+double z2 = 15.0lf;
+char ch = 'x';
+char *str = "hello world";

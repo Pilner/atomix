@@ -1,77 +1,27 @@
 #ifndef ATOMIX_LEXER_H
 #define ATOMIX_LEXER_H
 
-// Token Types
-typedef enum {
-	TK_ILLEGALCHR,
-    TK_EMPTYCHERR,
-    TK_MULTICHERR,
-	TK_EOF,
-	TK_IDENTIFIER,
-	TK_CHARLIT,
-	TK_STRINGLIT,
-	TK_INTLIT,
-	TK_FLTLIT,
-	TK_DOUBLELIT,
-	TK_AMPERSAND,
-    TK_AND,
-    TK_OR,
-    TK_BANG,
-    TK_PLUS,
-    TK_MINUS,
-    TK_ASTERISK,
-    TK_EXPONENT,
-    TK_SLASH,
-    TK_FLOORDIV,
-    TK_MODULO,
-    TK_ASSIGN,
-    TK_ASSIGNINC,
-    TK_ASSIGNDEC,
-    TK_ASSIGNMUL,
-    TK_ASSIGNDIV,
-    TK_ASSIGNMOD,
-    TK_INCREMENT,
-    TK_DECREMENT,
-    TK_EQUAL,
-    TK_GT,
-    TK_GEQUAL,
-    TK_LT,
-    TK_LEQUAL,
-    TK_NOTEQUAL,
-    TK_COMMA,
-    TK_DOT,
-	TK_SEMICOLON,
-	TK_COLON,
-	TK_LPAREN,
-	TK_RPAREN,
-	TK_LBRACKET,
-    TK_RBRACKET,
-    TK_LCURLY,
-    TK_RCURLY,
-	TK_INT,
-	TK_CHAR,
-	TK_FLOAT,
-	TK_DOUBLE,
-	TK_BOOL,
-	TK_VOID,
-	TK_OUTPUT,
-	TK_INPUT,
-	TK_FUNCTION,
-	TK_VAR,
-	TK_TRUE,
-	TK_FALSE,
-	TK_IF,
-	TK_ELSE,
-	TK_WHILE,
-	TK_CONTINUE,
-	TK_RETURN,
+#include "tokens.h"
 
-} TokenType;
+typedef struct LexerStruct {
+	const char *contents;
+	unsigned long index;
+	unsigned long length;
+	char ch;
+} Lexer;
 
-typedef struct TokenStruct {
-	TokenType type;
-	char *lexeme;
-} Token;
+Lexer *initializeLexer(const char *contents);
 
+char peekNextChar(Lexer* currentLexer);
+
+void readNextChar(Lexer* currentLexer);
+
+void showCurrChar(Lexer* currentLexer);
+
+void skipWhiteSpace(Lexer *currentLexer);
+
+char *lexerReadAsString(Lexer* currentLexer);
+
+Token *getCurrentToken(Lexer *currentLexer);
 
 #endif

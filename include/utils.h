@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
-void print_hello();
+int isValidIdentifier(const char chr);
+
+int isValidNumber(const char chr);
 
 #endif
